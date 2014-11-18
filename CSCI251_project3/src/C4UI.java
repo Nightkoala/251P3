@@ -91,6 +91,9 @@ public class C4UI implements ModelListener
 			public void actionPerformed (ActionEvent e)
 				{
 				// TBD
+				try {
+					viewListener.clear();
+				} catch( IOException exc ) {}//end try/catch
 				}
 			});
 
@@ -108,27 +111,27 @@ public class C4UI implements ModelListener
 
 		@Override
 		public void number(int p) throws IOException {
-			
+			boardPanel.repaint();
 		}//end number
 
 		@Override
 		public void name(int p, String n) throws IOException {
-			
+			boardPanel.repaint();
 		}//end name
 
 		@Override
 		public void turn(int p) throws IOException {
-			
+			boardPanel.repaint();
 		}//end turn
 
 		@Override
 		public void add(int p, int r, int c) throws IOException {
-			
+			boardPanel.repaint();
 		}//end add
 
 		@Override
 		public void clear() throws IOException {
-			
+			boardPanel.repaint();
 		}//end clear
 
 	}

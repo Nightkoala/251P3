@@ -35,19 +35,12 @@ public class ConnectFour{
 		Socket socket = new Socket();
 		socket.connect( new InetSocketAddress( host, port ) );
 		
-		//model
 		C4ModelClone model = new C4ModelClone();
-		//view
 		C4UI view = new C4UI( model.getBoard(), playerName );
-		//proxy
 		ModelProxy proxy = new ModelProxy( socket );
-		//model.setModelListener
 		model.setModelListener( view );
-		//view.setViewlistener
 		view.setViewListener( proxy );
-		//proxy.setModelListener
 		proxy.setModelListener( model );
-		//proxy.join
 		proxy.join( playerName );
 		
 	}//end main
