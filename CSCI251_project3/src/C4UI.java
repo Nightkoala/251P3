@@ -127,6 +127,7 @@ public class C4UI implements ModelListener
 
 		@Override
 		public void turn(int p) throws IOException {
+			this.p = p;
 			boardPanel.repaint();
 		}//end turn
 
