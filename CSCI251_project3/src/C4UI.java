@@ -82,6 +82,9 @@ public class C4UI implements ModelListener
 				{
 				int c = boardPanel.clickToColumn (e);
 				// TBD
+				try {
+					viewListener.add(1, c);
+				} catch( IOException exc ) {}//end try/catch
 				}
 			});
 
