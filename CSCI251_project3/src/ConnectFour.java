@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-public class ConnectFour {
+public class ConnectFour{
 
 	public static void usage() {
 		System.err.println("Usage: java ConnectFour <host> <port> <playername>");
@@ -36,12 +36,19 @@ public class ConnectFour {
 		socket.connect( new InetSocketAddress( host, port ) );
 		
 		//model
+		C4ModelClone model = new C4ModelClone();
 		//view
+		C4UI view = new C4UI( model.getBoard(), playerName );
 		//proxy
+		ModelProxy proxy = new ModelProxy( socket );
 		//model.setModelListener
+		model.setModelListener( view );
 		//view.setViewlistener
+		view.setViewListener( proxy );
 		//proxy.setModelListener
+		proxy.setModelListener( model );
 		//proxy.join
+		proxy.join( playerName );
 		
 	}//end main
 }//end ConnectFour

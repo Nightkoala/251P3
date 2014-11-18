@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,10 +16,10 @@ import javax.swing.JTextField;
 /**
  * Class C4UI provides the user interface for the network game of Connect Four.
  *
- * @author  Alan Kaminsky
+ * @author  Alan Kaminsky, Derek Brown
  * @version 13-Oct-2014
  */
-public class C4UI
+public class C4UI implements ModelListener
 	{
 
 // Hidden data members.
@@ -28,6 +30,8 @@ public class C4UI
 	private C4Panel boardPanel;
 	private JTextField message;
 	private JButton newGameButton;
+	
+	private ViewListener viewListener;
 
 // Exported constructors.
 
@@ -97,5 +101,34 @@ public class C4UI
 		frame.pack();
 		frame.setVisible (true);
 		}
+	
+		public void setViewListener( ViewListener viewListener ) {
+			this.viewListener = viewListener;
+		}//end setViewListener
+
+		@Override
+		public void number(int p) throws IOException {
+			
+		}//end number
+
+		@Override
+		public void name(int p, String n) throws IOException {
+			
+		}//end name
+
+		@Override
+		public void turn(int p) throws IOException {
+			
+		}//end turn
+
+		@Override
+		public void add(int p, int r, int c) throws IOException {
+			
+		}//end add
+
+		@Override
+		public void clear() throws IOException {
+			
+		}//end clear
 
 	}
