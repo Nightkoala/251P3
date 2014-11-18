@@ -32,6 +32,8 @@ public class C4UI implements ModelListener
 	private JButton newGameButton;
 	
 	private ViewListener viewListener;
+	
+	private int p;
 
 // Exported constructors.
 
@@ -72,7 +74,7 @@ public class C4UI implements ModelListener
 		p2.add (Box.createHorizontalStrut (10));
 		newGameButton = new JButton ("New Game");
 		newGameButton.setAlignmentY (0.5f);
-		newGameButton.setEnabled (false);
+		newGameButton.setEnabled (true);
 		p2.add (newGameButton);
 
 		// Clicking the Connect Four panel informs the view listener.
@@ -83,7 +85,7 @@ public class C4UI implements ModelListener
 				int c = boardPanel.clickToColumn (e);
 				// TBD
 				try {
-					viewListener.add(1, c);
+					viewListener.add(p, c);
 				} catch( IOException exc ) {}//end try/catch
 				}
 			});
@@ -114,6 +116,7 @@ public class C4UI implements ModelListener
 
 		@Override
 		public void number(int p) throws IOException {
+			this.p = p;
 			boardPanel.repaint();
 		}//end number
 
