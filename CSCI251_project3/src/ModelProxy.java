@@ -83,7 +83,9 @@ public class ModelProxy implements ViewListener {
 							break;
 					}//end switch
 				}//end for
-			} catch( IOException e ) {}//end try/catch
+			} catch( Exception e ) {
+				modelListener.close();
+			}//end try/catch
 			finally {
 				try {
 					socket.close();

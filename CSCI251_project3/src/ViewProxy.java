@@ -62,6 +62,8 @@ public class ViewProxy implements ModelListener {
 		out.printf("clear\n");
 	}//end clear
 	
+	public void close() {}
+	
 	// Hidden helper classes
 	
 	private class ReaderThread extends Thread {

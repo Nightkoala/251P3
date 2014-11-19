@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -176,5 +177,9 @@ public class C4UI implements ModelListener
 			numMoves = 0;
 			boardPanel.repaint();
 		}//end clear
+		
+		public void close() {
+			frame.dispatchEvent(new WindowEvent( frame, WindowEvent.WINDOW_CLOSING));
+		}//end close
 
 	}
