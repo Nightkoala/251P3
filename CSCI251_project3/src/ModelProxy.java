@@ -1,3 +1,11 @@
+/**
+ * ModelProxy.java
+ * 
+ * @author	Derek Brown
+ * 
+ * Purpose:	Provides the network proxy for the model object, resides in the 
+ * 			client and communicates with server.
+ */
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -16,6 +24,13 @@ public class ModelProxy implements ViewListener {
 	
 	// Constructor
 	
+	/**
+	 * Constructor for creating an instance of the model proxy.
+	 * 
+	 * @param socket	The socket connection to the server.
+	 * 
+	 * @throws IOException	Thrown if an I/O error occurred.
+	 */
 	public ModelProxy( Socket socket ) throws IOException {
 		this.socket = socket;
 		out = new PrintWriter( socket.getOutputStream(), true );
@@ -25,28 +40,41 @@ public class ModelProxy implements ViewListener {
 	
 	// Methods
 	
+	/**
+	 * Set the model listener object for this model proxy.
+	 * 
+	 * @param modelListener	The model listener to be set.
+	 */
 	public void setModelListener( ModelListener modelListener ) {
 		this.modelListener = modelListener;
 		new ReaderThread().start();
 	}//end setModelListener
 	
 	@Override
-	public void join(String n) throws IOException {
-		out.printf("join %s\n", n);
+	public void join( String n ) throws IOException {
+		out.printf( "join %s\n", n );
 	}//end join
 
 	@Override
-	public void add(int p, int c) throws IOException {
-		out.printf("add %d %d\n", p, c );
+	public void add( int p, int c ) throws IOException {
+		out.printf( "add %d %d\n", p, c );
 	}//end add
 
 	@Override
 	public void clear() throws IOException {
-		out.printf("clear\n");
+		out.printf( "clear\n" );
 	}//end clear
 	
 	// Hidden helper class
 	
+	/**
+	 * ReaderThread
+	 * 
+	 * @author	Derek Brown
+	 *
+	 * Purpose:	Receives messages from the network, decodes them, and invokes
+	 * 			the proper methods to process them.
+	 */
 	private class ReaderThread extends Thread {
 		public void run() {
 			try {
@@ -58,16 +86,16 @@ public class ModelProxy implements ViewListener {
 						modelListener.turn( -1 );
 						break;
 					}//end if
-					switch( cmd.charAt(0) ) {
+					switch( cmd.charAt( 0 ) ) {
 						case 'n':
-							if( cmd.charAt(1) == 'u' ) {
+							if( cmd.charAt( 1 ) == 'u' ) {
 								p = Character.getNumericValue( cmd.charAt( 7 ) );
 								modelListener.number( p );
 								break;
 							}//end if
 							p = Character.getNumericValue( cmd.charAt( 5 ) );
 							n = cmd.substring( 7 );
-							modelListener.name(p, n);
+							modelListener.name( p, n );
 							break;
 						case 't':
 							p = Character.getNumericValue( cmd.charAt( 5 ) );
@@ -77,13 +105,13 @@ public class ModelProxy implements ViewListener {
 							p = Character.getNumericValue( cmd.charAt( 4 ) );
 							r = Character.getNumericValue( cmd.charAt( 6 ) );
 							c = Character.getNumericValue( cmd.charAt( 8 ) );
-							modelListener.add(p, r, c);
+							modelListener.add( p, r, c );
 							break;
 						case 'c':
 							modelListener.clear();
 							break;
 						default:
-							System.err.println("Bad message");
+							System.err.println( "Bad message" );
 							break;
 					}//end switch
 				}//end for

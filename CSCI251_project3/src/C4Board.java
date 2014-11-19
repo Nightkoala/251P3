@@ -3,7 +3,7 @@
  * 
  * @author	Derek Brown
  *
- * Purpose:	implement interface methods
+ * Purpose:	Implementation of C4BoardIntf methods
  */
 
 public class C4Board implements C4BoardIntf {
@@ -11,12 +11,28 @@ public class C4Board implements C4BoardIntf {
 	private int[][] spot = new int[ROWS][COLS];
 	
 	// Constructor
+	
+	/**
+	 * Constructor for C4Board, The board initially is empty.
+	 */
 	public C4Board() {}
 	
+	// Methods
+	
+	/**
+	 * Places a players 'marker' on the specified tile in the board.
+	 * 
+	 * @param r	The row position
+	 * @param c	The column position
+	 * @param p	The player id
+	 */
 	public synchronized void setSpot( int r, int c, int p ) {
 		spot[r][c] = p;
 	}//end setSpot
 	
+	/**
+	 * Clears the current game board, sets all of the tiles to 0.
+	 */
 	public synchronized void clear() {
 		for( int r = 0 ; r < ROWS ; r++ ) {
 			for( int c = 0 ; c < COLS ; c++ ) {
@@ -26,7 +42,7 @@ public class C4Board implements C4BoardIntf {
 	}//end clear
 
 	@Override
-	public synchronized boolean hasPlayer1Marker(int r, int c) {
+	public synchronized boolean hasPlayer1Marker( int r, int c ) {
 		if( spot[r][c] == 1 ) {
 			return true;
 		}//end if
@@ -34,7 +50,7 @@ public class C4Board implements C4BoardIntf {
 	}//end hasPlayer1Marker
 
 	@Override
-	public synchronized boolean hasPlayer2Marker(int r, int c) {
+	public synchronized boolean hasPlayer2Marker( int r, int c ) {
 		if( spot[r][c] == 2 ) {
 			return true;
 		}//end if
@@ -46,7 +62,7 @@ public class C4Board implements C4BoardIntf {
 		int[] winner = new int[4];
 		int current = 0;
 		int length = 0;
-		// for each row check for winner
+		// Check rows
 		for( int r = 0 ; r < ROWS ; r++ ) {
 			for( int c = 0 ; c < COLS ; c++ ) {
 				if( current != spot[r][c] ) {
@@ -71,7 +87,7 @@ public class C4Board implements C4BoardIntf {
 			current = 0;
 			length = 0;
 		}//end for r
-		// for each column check for winner
+		// Check Columns
 		current = 0;
 		length = 0;
 		for( int c = 0 ; c < COLS ; c++ ) {

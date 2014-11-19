@@ -35,7 +35,6 @@ public class C4UI implements ModelListener
 	private ViewListener viewListener;
 	
 	private int p;
-	private String yourName;
 	private String theirName;
 	private boolean yourTurn;
 	private boolean gameOver = false;
@@ -55,7 +54,6 @@ public class C4UI implements ModelListener
 		 String name)
 		{
 		c4board = board;
-		this.yourName = name;
 
 		// Set up window.
 		frame = new JFrame ("Connect Four -- " + name);
@@ -91,10 +89,9 @@ public class C4UI implements ModelListener
 			public void mouseClicked (MouseEvent e)
 				{
 				int c = boardPanel.clickToColumn (e);
-				// TBD
 				try {
 					if( yourTurn && !gameOver && !isFull ) {
-						viewListener.add(p, c);
+						viewListener.add( p, c );
 					}//end if
 				} catch( IOException exc ) {}//end try/catch
 				}
@@ -105,7 +102,6 @@ public class C4UI implements ModelListener
 			{
 			public void actionPerformed (ActionEvent e)
 				{
-				// TBD
 				try {
 					viewListener.clear();
 					gameOver = false;
@@ -121,21 +117,26 @@ public class C4UI implements ModelListener
 		frame.setVisible (true);
 		}
 	
+		/**
+		 * Sets the view listener for this C4 UI.
+		 * 
+		 * @param viewListener	The view listener to be set.
+		 */
 		public void setViewListener( ViewListener viewListener ) {
 			this.viewListener = viewListener;
 		}//end setViewListener
 
 		@Override
-		public void number(int p) throws IOException {
+		public void number( int p ) throws IOException {
 			this.p = p;
 			boardPanel.repaint();
 		}//end number
 
 		@Override
-		public void name(int p, String n) throws IOException {
+		public void name( int p, String n ) throws IOException {
 			if( p != this.p ) {
 				this.theirName = n;
-				newGameButton.setEnabled(true);
+				newGameButton.setEnabled( true );
 				boardPanel.updateUI();
 			}//end if
 			boardPanel.repaint();
@@ -144,20 +145,21 @@ public class C4UI implements ModelListener
 		@Override
 		public void turn(int p) throws IOException {
 			if( p == -1 ) {
-				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+				frame.dispatchEvent(
+						new WindowEvent( frame, WindowEvent.WINDOW_CLOSING ) );
 			}//end if
 			if( p == this.p ) {
-				message.setText("Your turn");
+				message.setText( "Your turn" );
 				yourTurn = true;
 				boardPanel.updateUI();
 			}//end if
 			else if( p == 0 ) {
-				message.setText("Game over");
+				message.setText( "Game over" );
 				boardPanel.updateUI();
 				gameOver = true;
 			}//end else if
 			else {
-				message.setText(theirName + "'s turn");
+				message.setText( theirName + "'s turn" );
 				yourTurn = false;
 				boardPanel.updateUI();
 			}//end else
@@ -169,7 +171,7 @@ public class C4UI implements ModelListener
 		}//end turn
 
 		@Override
-		public void add(int p, int r, int c) throws IOException {
+		public void add( int p, int r, int c ) throws IOException {
 			boardPanel.repaint();
 		}//end add
 
@@ -180,5 +182,4 @@ public class C4UI implements ModelListener
 			numMoves = 0;
 			boardPanel.repaint();
 		}//end clear
-
-	}
+	}//end C4UI

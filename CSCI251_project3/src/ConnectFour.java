@@ -12,11 +12,24 @@ import java.net.Socket;
 
 public class ConnectFour{
 
+	/**
+	 * If improper number of command line arguments, displays the proper usage
+	 * of the program and exists.
+	 */
 	public static void usage() {
-		System.err.println("Usage: java ConnectFour <host> <port> <playername>");
+		System.err.println( "Usage: java ConnectFour <host> <port> <playername>" );
 		System.exit(1);
 	}//end usage
 	
+	/**
+	 * The main logic for the program, Checks to make sure the usage is correct
+	 * and then initializes all necessary objects to run a successful game
+	 * of connect four over a network.
+	 * 
+	 * @param args	Command line arguments: <host> <port> <playername>
+	 * 
+	 * @throws IOException	Thrown if an I/O error occurred.
+	 */
 	public static void main( String[] args ) throws IOException {
 		if( args.length != 3 ) {
 			usage();
@@ -26,8 +39,8 @@ public class ConnectFour{
 		try {
 			port = Integer.parseInt( args[1] );
 		} catch( NumberFormatException e ) {
-			System.err.printf("<port> must be an int\n");
-			e.printStackTrace(System.err);
+			System.err.printf( "<port> must be an int\n" );
+			e.printStackTrace( System.err );
 		}//end try/catch
 		port = Integer.parseInt( args[1] );
 		String playerName = args[2];
@@ -42,6 +55,5 @@ public class ConnectFour{
 		view.setViewListener( proxy );
 		proxy.setModelListener( model );
 		proxy.join( playerName );
-		
 	}//end main
 }//end ConnectFour
