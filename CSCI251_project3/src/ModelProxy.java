@@ -54,6 +54,7 @@ public class ModelProxy implements ViewListener {
 					int p, r, c;
 					String n;
 					String cmd = in.readLine();
+					System.out.println(cmd);
 					switch( cmd.charAt(0) ) {
 						case 'n':
 							if( cmd.charAt(1) == 'u' ) {
