@@ -157,10 +157,10 @@ public class C4UI implements ModelListener
 				yourTurn = false;
 				boardPanel.updateUI();
 			}//end else
-			numMoves++;
 			if( numMoves == 42 ) {
 				isFull = true;
 			}//end if
+			numMoves++;
 			boardPanel.repaint();
 		}//end turn
 
@@ -173,7 +173,7 @@ public class C4UI implements ModelListener
 		public void clear() throws IOException {
 			gameOver = false;
 			isFull = false;
-			numMoves = 1;
+			numMoves = 0;
 			boardPanel.repaint();
 		}//end clear
 
