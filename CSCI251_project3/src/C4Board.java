@@ -44,6 +44,7 @@ public class C4Board implements C4BoardIntf {
 
 	@Override
 	public synchronized int[] hasWon() {
-		return null;
+		int[] winning = {1, 1, 4, 4};
+		return winning;
 	}//end hasWon
 }//end C4Board

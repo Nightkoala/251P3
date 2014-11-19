@@ -142,7 +142,7 @@ public class C4UI implements ModelListener
 				boardPanel.updateUI();
 			}
 			else {
-				message.setText(theirName + " turn");
+				message.setText(theirName + "'s turn");
 				yourTurn = false;
 				boardPanel.updateUI();
 			}
