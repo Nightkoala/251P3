@@ -173,6 +173,7 @@ public class C4UI implements ModelListener
 		public void clear() throws IOException {
 			gameOver = false;
 			isFull = false;
+			numMoves = 1;
 			boardPanel.repaint();
 		}//end clear
 
