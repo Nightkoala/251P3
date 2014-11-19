@@ -3,8 +3,8 @@
  * 
  * @author	Derek Brown
  *
- * Purpose:	The clone of the model used by the server, used for notifying the 
- * 			C4UI when changes have been made.
+ * Purpose:	The clone of the model used by the server, used for notifying
+ *		the C4UI when changes have been made.
  */
 
 import java.io.IOException;

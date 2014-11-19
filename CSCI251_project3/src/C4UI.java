@@ -146,7 +146,8 @@ public class C4UI implements ModelListener
 		public void turn(int p) throws IOException {
 			if( p == -1 ) {
 				frame.dispatchEvent(
-						new WindowEvent( frame, WindowEvent.WINDOW_CLOSING ) );
+						new WindowEvent( frame,
+						WindowEvent.WINDOW_CLOSING ) );
 			}//end if
 			if( p == this.p ) {
 				message.setText( "Your turn" );

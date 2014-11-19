@@ -13,18 +13,19 @@ import java.net.Socket;
 public class ConnectFour{
 
 	/**
-	 * If improper number of command line arguments, displays the proper usage
-	 * of the program and exists.
+	 * If improper number of command line arguments, displays the proper
+	 * usage of the program and exists.
 	 */
 	public static void usage() {
-		System.err.println( "Usage: java ConnectFour <host> <port> <playername>" );
+		System.err.println(
+			"Usage: java ConnectFour <host> <port> <playername>" );
 		System.exit(1);
 	}//end usage
 	
 	/**
-	 * The main logic for the program, Checks to make sure the usage is correct
-	 * and then initializes all necessary objects to run a successful game
-	 * of connect four over a network.
+	 * The main logic for the program, Checks to make sure the usage is
+	 * correct and then initializes all necessary objects to run a
+	 * successful game of connect four over a network.
 	 * 
 	 * @param args	Command line arguments: <host> <port> <playername>
 	 * 

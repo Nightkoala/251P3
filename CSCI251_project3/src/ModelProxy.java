@@ -4,7 +4,7 @@
  * @author	Derek Brown
  * 
  * Purpose:	Provides the network proxy for the model object, resides in the 
- * 			client and communicates with server.
+ * 		client and communicates with server.
  */
 
 import java.io.BufferedReader;
@@ -35,7 +35,7 @@ public class ModelProxy implements ViewListener {
 		this.socket = socket;
 		out = new PrintWriter( socket.getOutputStream(), true );
 		in = new BufferedReader(
-				new InputStreamReader( socket.getInputStream() ) );
+			new InputStreamReader( socket.getInputStream() ) );
 	}//end ModelProxy constructor
 	
 	// Methods
@@ -72,8 +72,8 @@ public class ModelProxy implements ViewListener {
 	 * 
 	 * @author	Derek Brown
 	 *
-	 * Purpose:	Receives messages from the network, decodes them, and invokes
-	 * 			the proper methods to process them.
+	 * Purpose:	Receives messages from the network, decodes them, and
+	 *		invokes the proper methods to process them.
 	 */
 	private class ReaderThread extends Thread {
 		public void run() {
@@ -89,7 +89,8 @@ public class ModelProxy implements ViewListener {
 					switch( cmd.charAt( 0 ) ) {
 						case 'n':
 							if( cmd.charAt( 1 ) == 'u' ) {
-								p = Character.getNumericValue( cmd.charAt( 7 ) );
+								p = Character.getNumericValue(
+									cmd.charAt( 7 ) );
 								modelListener.number( p );
 								break;
 							}//end if

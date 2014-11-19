@@ -4,7 +4,7 @@
  * @author	Derek Brown
  *
  * Purpose:	The interface for an object that is triggered by events from the
- * 			model object.
+ * 		model object.
  */
 
 import java.io.IOException;
@@ -40,7 +40,8 @@ public interface ModelListener {
 	public void turn( int p ) throws IOException;
 	
 	/**
-	 * Sent to each client, reports where a marker was added and by which player.
+	 * Sent to each client, reports where a marker was added and by which
+	 * player.
 	 * 
 	 * @param p	The player's number who made the move.
 	 * @param r	The row position.
