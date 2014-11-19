@@ -38,6 +38,8 @@ public class C4UI implements ModelListener
 	private String theirName;
 	private boolean yourTurn;
 	private boolean gameOver = false;
+	private boolean isFull = false;
+	private int numMoves = 0;
 
 // Exported constructors.
 
@@ -90,7 +92,7 @@ public class C4UI implements ModelListener
 				int c = boardPanel.clickToColumn (e);
 				// TBD
 				try {
-					if( yourTurn && !gameOver ) {
+					if( yourTurn && !gameOver && !isFull ) {
 						viewListener.add(p, c);
 					}//end if
 				} catch( IOException exc ) {}//end try/catch
@@ -155,6 +157,10 @@ public class C4UI implements ModelListener
 				yourTurn = false;
 				boardPanel.updateUI();
 			}//end else
+			numMoves++;
+			if( numMoves == 42 ) {
+				isFull = true;
+			}//end if
 			boardPanel.repaint();
 		}//end turn
 
@@ -166,6 +172,7 @@ public class C4UI implements ModelListener
 		@Override
 		public void clear() throws IOException {
 			gameOver = false;
+			isFull = false;
 			boardPanel.repaint();
 		}//end clear
 
