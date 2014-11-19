@@ -52,18 +52,14 @@ public class C4Board implements C4BoardIntf {
 		for( int r = 0 ; r < ROWS ; r++ ) {
 			for( int c = 0 ; c < COLS ; c++ ) {
 				if( current != spot[r][c] ) {
-//					Arrays.fill(winner, 0);
 					current = spot[r][c];
-					length = 0;
+					winner[0] = r;
+					winner[1] = c;
+					length = 1;
 				}//end if
 				if( current == spot[r][c] ) {
 					if( current != 0 ) {
-						if( length == 0 ) {
-							winner[0] = r;
-							winner[1] = c;
-							length++;
-						}//end if
-						else if( length == 4) {
+						if( length == 4) {
 							winner[2] = r;
 							winner[3] = c;
 							return winner;
@@ -81,7 +77,6 @@ public class C4Board implements C4BoardIntf {
 		for( int c = 0 ; c < COLS ; c++ ) {
 			for( int r = 0 ; r < ROWS ; r++ ) {
 				if( current != spot[r][c] ) {
-//					Arrays.fill(winner, 0);
 					current = spot[r][c];
 					winner[0] = r;
 					winner[1] = c;
@@ -89,11 +84,6 @@ public class C4Board implements C4BoardIntf {
 				}//end if
 				if( current == spot[r][c] ) {
 					if( current != 0 ) {
-//						if( length == 0 ) {
-//							winner[0] = r;
-//							winner[1] = c;
-//							length++;
-//						}//end if
 						if( length == 4) {
 							winner[2] = r;
 							winner[3] = c;
