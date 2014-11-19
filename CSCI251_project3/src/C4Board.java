@@ -76,6 +76,8 @@ public class C4Board implements C4BoardIntf {
 			}//end for c
 		}//end for r
 		// for each row check for winner
+		current = 0;
+		length = 0;
 		for( int c = 0 ; c < COLS ; c++ ) {
 			for( int r = 0 ; r < ROWS ; r++ ) {
 				if( current != spot[r][c] ) {
