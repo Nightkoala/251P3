@@ -48,11 +48,11 @@ public class C4Board implements C4BoardIntf {
 		int[] winner = new int[4];
 		int current = 0;
 		int length = 0;
-		// for each column check for winner
+		// for each row check for winner
 		for( int r = 0 ; r < ROWS ; r++ ) {
 			for( int c = 0 ; c < COLS ; c++ ) {
 				if( current != spot[r][c] ) {
-					Arrays.fill(winner, 0);
+//					Arrays.fill(winner, 0);
 					current = spot[r][c];
 					length = 0;
 				}//end if
@@ -75,24 +75,26 @@ public class C4Board implements C4BoardIntf {
 				}//end if
 			}//end for c
 		}//end for r
-		// for each row check for winner
+		// for each column check for winner
 		current = 0;
 		length = 0;
 		for( int c = 0 ; c < COLS ; c++ ) {
 			for( int r = 0 ; r < ROWS ; r++ ) {
 				if( current != spot[r][c] ) {
-					Arrays.fill(winner, 0);
+//					Arrays.fill(winner, 0);
 					current = spot[r][c];
-					length = 0;
+					winner[0] = r;
+					winner[1] = c;
+					length = 1;
 				}//end if
 				if( current == spot[r][c] ) {
 					if( current != 0 ) {
-						if( length == 0 ) {
-							winner[0] = r;
-							winner[1] = c;
-							length++;
-						}//end if
-						else if( length == 4) {
+//						if( length == 0 ) {
+//							winner[0] = r;
+//							winner[1] = c;
+//							length++;
+//						}//end if
+						if( length == 4) {
 							winner[2] = r;
 							winner[3] = c;
 							return winner;
