@@ -6,6 +6,7 @@
  * Purpose:	implement interface methods
  */
 
+import java.util.Arrays;
 
 public class C4Board implements C4BoardIntf {
 	
@@ -44,7 +45,63 @@ public class C4Board implements C4BoardIntf {
 
 	@Override
 	public synchronized int[] hasWon() {
-		int[] winning = {1, 1, 4, 4};
+		int[] winner = new int[4];
+		int current = 0;
+		int length = 0;
+		// for each column check for winner
+		for( int r = 0 ; r < ROWS ; r++ ) {
+			for( int c = 0 ; c < COLS ; c++ ) {
+				if( current != spot[r][c] ) {
+					Arrays.fill(winner, 0);
+					current = spot[r][c];
+					length = 0;
+				}//end if
+				if( current == spot[r][c] ) {
+					if( current != 0 ) {
+						if( length == 0 ) {
+							winner[0] = r;
+							winner[1] = c;
+							length++;
+						}//end if
+						else if( length == 4) {
+							winner[2] = r;
+							winner[3] = c;
+							return winner;
+						}//end else if
+						else {
+							length++;
+						}//end else
+					}//end if
+				}//end if
+			}//end for c
+		}//end for r
+		// for each row check for winner
+		for( int c = 0 ; c < COLS ; c++ ) {
+			for( int r = 0 ; r < ROWS ; r++ ) {
+				if( current != spot[r][c] ) {
+					Arrays.fill(winner, 0);
+					current = spot[r][c];
+					length = 0;
+				}//end if
+				if( current == spot[r][c] ) {
+					if( current != 0 ) {
+						if( length == 0 ) {
+							winner[0] = r;
+							winner[1] = c;
+							length++;
+						}//end if
+						else if( length == 4) {
+							winner[2] = r;
+							winner[3] = c;
+							return winner;
+						}//end else if
+						else {
+							length++;
+						}//end else
+					}//end if
+				}//end if
+			}//end for r
+		}//end for c
 		return null;
 	}//end hasWon
 }//end C4Board
