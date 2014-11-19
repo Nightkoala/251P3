@@ -62,5 +62,4 @@ public class C4ModelClone implements ModelListener {
 		modelListener.clear();
 	}//end clear
 	
-	public void close() {}
 }//end C4ModelClone

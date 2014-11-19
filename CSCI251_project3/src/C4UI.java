@@ -177,9 +177,5 @@ public class C4UI implements ModelListener
 			numMoves = 0;
 			boardPanel.repaint();
 		}//end clear
-		
-		public void close() {
-			frame.dispatchEvent(new WindowEvent( frame, WindowEvent.WINDOW_CLOSING));
-		}//end close
 
 	}

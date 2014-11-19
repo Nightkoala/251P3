@@ -20,6 +20,4 @@ public interface ModelListener {
 	
 	public void clear() throws IOException;
 	
-	public void close();
-	
 }//end ModelListener
