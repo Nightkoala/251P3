@@ -175,7 +175,7 @@ public class C4Board implements C4BoardIntf {
 			length = 0;
 		}//end for d
 		for( int d = 0 ; d <= 3 ; d++ ) {
-			for( int r = 0 ; r <= 6-d ; r++ ) {
+			for( int r = 0 ; r <= 5-d ; r++ ) {
 				c = d+r+1;
 				if( current != spot[r][c] ) {
 					current = spot[r][c];
