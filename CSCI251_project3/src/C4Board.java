@@ -6,8 +6,6 @@
  * Purpose:	implement interface methods
  */
 
-import java.util.Arrays;
-
 public class C4Board implements C4BoardIntf {
 	
 	private int[][] spot = new int[ROWS][COLS];
