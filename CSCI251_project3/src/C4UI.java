@@ -37,6 +37,7 @@ public class C4UI implements ModelListener
 	private String yourName;
 	private String theirName;
 	private boolean yourTurn;
+	private boolean gameOver = false;
 
 // Exported constructors.
 
@@ -89,7 +90,7 @@ public class C4UI implements ModelListener
 				int c = boardPanel.clickToColumn (e);
 				// TBD
 				try {
-					if( yourTurn ) {
+					if( yourTurn && !gameOver ) {
 						viewListener.add(p, c);
 					}//end if
 				} catch( IOException exc ) {}//end try/catch
@@ -144,7 +145,9 @@ public class C4UI implements ModelListener
 				boardPanel.updateUI();
 			}//end if
 			else if( p == 0 ) {
-				
+				message.setText("Game over");
+				boardPanel.updateUI();
+				gameOver = true;
 			}//end else if
 			else {
 				message.setText(theirName + "'s turn");
