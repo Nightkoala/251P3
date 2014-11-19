@@ -143,7 +143,6 @@ public class C4UI implements ModelListener
 			if( p == this.p ) {
 				message.setText("Your turn");
 				yourTurn = true;
-				gameOver = false;
 				boardPanel.updateUI();
 			}//end if
 			else if( p == 0 ) {
@@ -166,6 +165,7 @@ public class C4UI implements ModelListener
 
 		@Override
 		public void clear() throws IOException {
+			gameOver = false;
 			boardPanel.repaint();
 		}//end clear
 
