@@ -151,6 +151,54 @@ public class C4Board implements C4BoardIntf {
 			length = 0;
 		}//end for d
 		// Check 'decreasing' diagonals
+		current = 0;
+		length = 0;
+		for( int d = 2 ; d >= 0 ; d-- ) {
+			for( int r = d ; r <= 5 ; r++ ) {
+				c = r-d;
+				if( current != spot[r][c] ) {
+					current = spot[r][c];
+					winner[0] = r;
+					winner[1] = c;
+					length = 1;
+				}//end if
+				if( current == spot[r][c] && current != 0 ) {
+					if( length == 4 ) {
+						winner[2] = r;
+						winner[3] = c;
+						return winner;
+					}//end if
+					else {
+						length++;
+					}//end else
+				}//end if
+			}//end for r
+			current = 0;
+			length = 0;
+		}//end for d
+		for( int d = 0 ; d <= 3 ; d++ ) {
+			for( int r = 0 ; r <= 6-d ; r++ ) {
+				c = d+r+1;
+				if( current != spot[r][c] ) {
+					current = spot[r][c];
+					winner[0] = r;
+					winner[1] = c;
+					length = 1;
+				}//end if
+				if( current == spot[r][c] && current != 0 ) {
+					if( length == 4 ) {
+						winner[2] = r;
+						winner[3] = c;
+						return winner;
+					}//end if
+					else {
+						length++;
+					}//end else
+				}//end if
+			}//end for r
+			current = 0;
+			length = 0;
+		}//end for d
 		return null;
 	}//end hasWon
 }//end C4Board
