@@ -78,7 +78,7 @@ public class C4UI implements ModelListener
 		p2.add (Box.createHorizontalStrut (10));
 		newGameButton = new JButton ("New Game");
 		newGameButton.setAlignmentY (0.5f);
-		newGameButton.setEnabled (true);
+		newGameButton.setEnabled (false);
 		p2.add (newGameButton);
 
 		// Clicking the Connect Four panel informs the view listener.
@@ -130,6 +130,8 @@ public class C4UI implements ModelListener
 		public void name(int p, String n) throws IOException {
 			if( p != this.p ) {
 				this.theirName = n;
+				newGameButton.setEnabled(true);
+				boardPanel.updateUI();
 			}//end if
 			boardPanel.repaint();
 		}//end name
@@ -140,12 +142,15 @@ public class C4UI implements ModelListener
 				message.setText("Your turn");
 				yourTurn = true;
 				boardPanel.updateUI();
-			}
+			}//end if
+			else if( p == 0 ) {
+				
+			}//end else if
 			else {
 				message.setText(theirName + "'s turn");
 				yourTurn = false;
 				boardPanel.updateUI();
-			}
+			}//end else
 			boardPanel.repaint();
 		}//end turn
 
