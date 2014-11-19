@@ -105,6 +105,7 @@ public class C4UI implements ModelListener
 				// TBD
 				try {
 					viewListener.clear();
+					gameOver = false;
 				} catch( IOException exc ) {}//end try/catch
 				}
 			});
