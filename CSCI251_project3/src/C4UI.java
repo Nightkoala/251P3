@@ -34,6 +34,9 @@ public class C4UI implements ModelListener
 	private ViewListener viewListener;
 	
 	private int p;
+	private String yourName;
+	private String theirName;
+	private boolean yourTurn;
 
 // Exported constructors.
 
@@ -48,6 +51,7 @@ public class C4UI implements ModelListener
 		 String name)
 		{
 		c4board = board;
+		this.yourName = name;
 
 		// Set up window.
 		frame = new JFrame ("Connect Four -- " + name);
@@ -85,7 +89,9 @@ public class C4UI implements ModelListener
 				int c = boardPanel.clickToColumn (e);
 				// TBD
 				try {
-					viewListener.add(p, c);
+					if( yourTurn ) {
+						viewListener.add(p, c);
+					}//end if
 				} catch( IOException exc ) {}//end try/catch
 				}
 			});
@@ -122,6 +128,9 @@ public class C4UI implements ModelListener
 
 		@Override
 		public void name(int p, String n) throws IOException {
+			if( p != this.p ) {
+				this.theirName = n;
+			}//end if
 			boardPanel.repaint();
 		}//end name
 
@@ -129,9 +138,13 @@ public class C4UI implements ModelListener
 		public void turn(int p) throws IOException {
 			if( p == this.p ) {
 				message.setText("Your turn");
+				yourTurn = true;
+				boardPanel.updateUI();
 			}
 			else {
-				message.setText("Other Person");
+				message.setText(theirName + " turn");
+				yourTurn = false;
+				boardPanel.updateUI();
 			}
 			boardPanel.repaint();
 		}//end turn
