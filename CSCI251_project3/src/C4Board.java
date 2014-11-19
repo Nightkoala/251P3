@@ -70,6 +70,8 @@ public class C4Board implements C4BoardIntf {
 					}//end if
 				}//end if
 			}//end for c
+			current = 0;
+			length = 0;
 		}//end for r
 		// for each column check for winner
 		current = 0;
@@ -95,6 +97,8 @@ public class C4Board implements C4BoardIntf {
 					}//end if
 				}//end if
 			}//end for r
+			current = 0;
+			length = 0;
 		}//end for c
 		// Check 'increasing' diagonals
 		current = 0;
@@ -120,6 +124,8 @@ public class C4Board implements C4BoardIntf {
 					}//end if
 				}//end for c
 			}//end for r
+			current = 0;
+			length = 0;
 		}//end for d
 		for( int d = 1 ; d <= 3 ; d++ ) {
 			for( int r = 5 ; r <= d-1 ; r-- ) {
@@ -142,6 +148,8 @@ public class C4Board implements C4BoardIntf {
 					}//end if
 				}//end for c
 			}//end for r
+			current = 0;
+			length = 0;
 		}//end for d
 		// Check 'decreasing' diagonals
 		return null;
